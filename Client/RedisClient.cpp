@@ -57,3 +57,7 @@ void RedisClient::disconnect() {
         sockfd = -1; // Reset socket file descripton
     }
 }
+
+int RedisClient::getSocketFD() const {
+    return sockfd;
+}

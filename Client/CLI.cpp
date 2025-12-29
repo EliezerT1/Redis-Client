@@ -42,8 +42,16 @@ CLI::CLI(const std::string &host, int port)
             std::vector<std::string> args = CommandHandler::splitArgs(line);
             if(args.empty()) continue;
 
-            for (const auto &arg : args) {
-                std::cout << arg << "\n";
+            // for debug
+            // for (const auto &arg : args) {
+            //     std::cout << arg << "\n";
+            // }
+            std::string command = CommandHandler::buildRESPcommand(args);
+            if (!redisClient.sendCommand(command)) {
+                std::cerr << "(Error) Faild to send command. \n";
+                break;
             }
+            // Parse and print response
         }
+
     }

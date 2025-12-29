@@ -32,8 +32,8 @@ std::string CommandHandler::buildRESPcommand(const std::vector<std::string> &arg
     std::ostringstream oss;
     oss << "*" << args.size() << "\r\n"; // num of args
 
-    for (const auto &args: args) {
-        oss << "$" << args.size() << "\r\n" << "\r\n"; // len and value of arg
+    for (const auto &arg: args) {
+        oss << "$" << arg.size() << "\r\n" << arg << "\r\n"; // len and value of arg
     }
     return oss.str();
 }

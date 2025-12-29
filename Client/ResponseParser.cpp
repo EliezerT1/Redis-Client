@@ -34,9 +34,9 @@ std::string ResponseParser::parseResponse(int sockfd) {
     }
     switch (prefix) {
         case '+': return parseSimpleString(sockfd);
-        case '-': return parseSimpleErrors(sockfd);
+        // case '-': return parseSimpleErrors(sockfd);
         // case ':': return parseInteger(sockfd);
-        case '$': return parseBulkString(sockfd);
+        // case '$': return parseBulkString(sockfd);
         // case '*': return parseArray(sockfd);
         default:
         return "error: unknown response type.";
@@ -46,9 +46,7 @@ std::string ResponseParser::parseResponse(int sockfd) {
     std::string ResponseParser::parseSimpleString(int sockfd) {
         return readLine(sockfd);
     }
-    std::string ResponseParser::parseSimpleErrors(int sockfd) {
-        return "(Error) " + readLine(sockfd);
-    }
+    // std::string ResponseParser::parseSimpleErrors(int sockfd) {
 
     // }
     // std::string ResponseParser::parseInteger(int sockfd) {
